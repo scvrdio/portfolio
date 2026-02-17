@@ -5,7 +5,7 @@ type Props = {
   
   export function TextBlock({ accent, children }: Props) {
     return (
-      <div className="space-y-3">
+      <div className="space-y-1">
         {accent ? <p className="t-accent ty-body">{accent}</p> : null}
         <div className="t-body ty-body">{children}</div>
       </div>

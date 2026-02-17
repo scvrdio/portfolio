@@ -79,8 +79,8 @@ img {
   }
 
   .ty-title {
-    font-variation-settings: "wdth" 75, "wght" 700, "opsz" 32;
-    letter-spacing: -0.01em;
+    font-variation-settings: "wdth" 75, "wght" 600, "opsz" 32;
+    letter-spacing: 0.01em;
   }
   
   .ty-body {

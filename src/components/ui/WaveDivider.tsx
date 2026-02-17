@@ -1,9 +1,9 @@
 export function WaveDivider() {
     return (
-      <div className="py-6">
-        <div className="h-3 w-3 rounded-full bg-blue-600" />
+      <div className="py-2">
+        <div className="h-6 w-6 rounded-full bg-[#0033FF]" />
         <svg
-          className="mt-3 h-10 w-full"
+          className="mt-0 h-14 w-full"
           viewBox="0 0 720 40"
           preserveAspectRatio="none"
           aria-hidden="true"

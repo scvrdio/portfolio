@@ -1,28 +1,24 @@
-import Link from "next/link";
+import { Link } from "../ui/Link";
 
 export function CaseTopBar(props: {
-  title: string;
-  backHref?: string;
-  figmaHref?: string;
+    title: string;
+    backHref?: string;
+    figmaHref?: string;
 }) {
-  const backHref = props.backHref ?? "/";
+    const backHref = props.backHref ?? "/";
 
-  return (
-    <div className="flex items-center justify-between gap-4">
-      <Link href={backHref} className="t-title ty-title hover:underline">
-        ← <span className="t-title ty-title">{props.title}</span>
-      </Link>
+    return (
+        <div className="flex items-center justify-between gap-4">
 
-      {props.figmaHref ? (
-        <a
-          href={props.figmaHref}
-          target="_blank"
-          rel="noreferrer"
-          className="t-accent ty-body hover:underline"
-        >
-          Figma ↗
-        </a>
-      ) : null}
-    </div>
-  );
+            <Link href={backHref} variant="left">
+                Назад
+            </Link>
+
+            {props.figmaHref ? (
+                <Link href={props.figmaHref} variant="up-right">
+                Figma
+                </Link>
+            ) : null}
+        </div>
+    );
 }

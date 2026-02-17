@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "../ui/Link";
 import { TextBlock } from "@/components/ui/TextBlock";
 import { MediaBlock } from "@/components/ui/MediaBlock";
 
@@ -17,9 +17,9 @@ export function ProjectBlock({ p }: { p: Project }) {
     <section className="space-y-4">
       {/* title + meta */}
       <div className="flex flex-wrap items-baseline gap-x-4 gap-y-2">
-        <Link href={p.href} className="t-title ty-title hover:underline">
+        <p className="t-title ty-title">
           {p.title}
-        </Link>
+        </p>
 
         <p className="t-accent ty-body">{p.meta}</p>
       </div>
@@ -30,25 +30,25 @@ export function ProjectBlock({ p }: { p: Project }) {
       {/* роль/вклад + ссылка "Описание →" */}
       <TextBlock>
         {p.note}{" "}
-        <Link href={p.href} className="t-accent ty-body hover:underline">
-          Описание →
+        <Link href={p.href} variant="right">
+          Описание
         </Link>
       </TextBlock>
 
       {/* figma */}
       {p.figmaHref ? (
-        <a
-          href={p.figmaHref}
-          target="_blank"
-          rel="noreferrer"
-          className="t-accent ty-body inline-block hover:underline"
-        >
-          Figma ↗
-        </a>
+
+        <Link href={p.figmaHref} variant="up-right">
+          Figma
+        </Link>
       ) : null}
 
       {/* media */}
-      {p.media?.length ? <MediaBlock items={p.media as any} fullWidth /> : null}
+      {p.media?.length ? (
+        <div className="mt-[-24]">
+          <MediaBlock items={p.media as any} fullWidth />
+        </div>
+      ) : null}
     </section>
   );
 }

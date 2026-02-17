@@ -1,14 +1,15 @@
 export const projects = [
   {
-    href: "/terminal",
-    title: "Terminal",
-    meta: "Product Designer · Сен 2022 — Дек 2024",
-    description: "Web-3 платформа мини-игр в Telegram с месячной аудиторией 5М+ пользователей. ",
-    note: "Разработал дизайн и репозиционирование на web-2 аудиторию, улучшил конверсию в пополенение, фокусировался на активации и ретеншене.",
+    href: "/look",
+    title: "Look",
+    meta: "Product Designer / Product Lead",
+    description:
+      "Приложение для ведения персональной библиотеки видеоконтента с созданием списков, отслеживанием прогресса просмотра сериала, социальными функциями и персональным рекомом.",
+    note: "Вёл проект от идеи до запуска MVP.",
     media: [
       {
         type: "image",
-        src: "/projects/terminal-hero.png",
+        src: "/projects/look-hero.png",
         mode: "static",
         width: 2000,
         height: 1200,
@@ -35,16 +36,15 @@ export const projects = [
     ],
   },
   {
-    href: "/look",
-    title: "Look",
-    meta: "Product Designer / Product Lead · Ноябрь 2025 — ...",
-    description:
-      "Приложение для ведения персональной библиотеки видеоконтента с созданием списков, отслеживанием прогресса просмотра сериала, социальными функциями и персональным рекомом.",
-    note: "Вёл проект от идеи до запуска MVP.",
+    href: "/terminal",
+    title: "Terminal",
+    meta: "Product Designer · Сен 2022 — Дек 2024",
+    description: "Web-3 платформа мини-игр в Telegram с месячной аудиторией 5М+ пользователей. ",
+    note: "Разработал дизайн и репозиционирование на web-2 аудиторию, улучшил конверсию в пополенение, фокусировался на активации и ретеншене.",
     media: [
       {
         type: "image",
-        src: "/projects/look-hero.png",
+        src: "/projects/terminal-hero.png",
         mode: "static",
         width: 2000,
         height: 1200,
@@ -52,4 +52,5 @@ export const projects = [
       },
     ],
   },
+
 ] as const;

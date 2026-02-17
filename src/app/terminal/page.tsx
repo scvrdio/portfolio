@@ -13,7 +13,7 @@ export default function Page() {
 
       <article className="space-y-12">
         {/* ВВЕДЕНИЕ */}
-        <Section title="Введение">
+        <Section title="Terminal">
           <TextBlock accent="Описание">
             Приложение с интегрированными партнерскими казуальными мини-играми, встроенными заданиями и реферальной системой.
           </TextBlock>

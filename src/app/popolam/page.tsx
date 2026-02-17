@@ -8,12 +8,12 @@ import { MediaBlock } from "@/components/ui/MediaBlock";
 export default function Page() {
   return (
     <div className="space-y-10">
-      <CaseTopBar title="Попoлам" figmaHref="#" />
+      <CaseTopBar title="Попoлам" figmaHref="https://www.figma.com/design/YSb8QXs053NIUCRF9qtqTV/%D0%9F%D0%BE%D0%BF%D0%BE%D0%BB%D0%B0%D0%BC?node-id=0-1&t=ie10ciZHeCxHMfsz-1" />
       <CaseHero src="/projects/popolam-hero.png" />
 
       <article className="space-y-12">
         {/* ВВЕДЕНИЕ */}
-        <Section title="Введение">
+        <Section title="Пополам">
           <TextBlock accent="Описание">
             Приложение для быстрого деления чеков между людьми с использованием компьютерного зрения и ML-алгоритмов.
             Все траты собираются в одном месте, позиции можно быстро распределить между участниками, а оплату провести
@@ -160,6 +160,7 @@ export default function Page() {
             В первую очередь добавил больше CTA на подключение СБП: при логине, на главный экран и после каждого создания чека.
             <span className="pbreak" />Создал гостевой сценарий. В нем пользователь переходит по QR-коду и попадает в веб-версию приложения. Здесь отображается информация о чеке и предлагается вписать свое имя, присоединиться к делению и, по желанию, скачать приложение.
             <span className="pbreak" />В остальном флоу выглядит как обычно.
+            <span className="pbreak" />
           </TextBlock>
 
           <MediaBlock
