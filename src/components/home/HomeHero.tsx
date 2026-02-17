@@ -21,7 +21,7 @@ export function HomeHero() {
         </p>
 
         <a
-          href="/cv.pdf"
+          href="https://drive.google.com/file/d/1n7OB6XH48o5YIqdLwqVIowm41XCQs3EM/view"
           target="_blank"
           rel="noreferrer"
           className="t-accent ty-body hover:underline"
@@ -30,7 +30,7 @@ export function HomeHero() {
         </a>
 
         <a
-          href="https://t.me/USERNAME"
+          href="https://t.me/serezhaivlev"
           target="_blank"
           rel="noreferrer"
           className="t-accent ty-body hover:underline"
