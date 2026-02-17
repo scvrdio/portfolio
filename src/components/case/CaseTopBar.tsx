@@ -4,6 +4,7 @@ export function CaseTopBar(props: {
     title: string;
     backHref?: string;
     figmaHref?: string;
+    linkLabel?: string;
 }) {
     const backHref = props.backHref ?? "/";
 
@@ -16,7 +17,7 @@ export function CaseTopBar(props: {
 
             {props.figmaHref ? (
                 <Link href={props.figmaHref} variant="up-right">
-                Figma
+                {props.linkLabel ?? "Figma"}
                 </Link>
             ) : null}
         </div>

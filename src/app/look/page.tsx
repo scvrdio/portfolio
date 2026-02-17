@@ -9,7 +9,7 @@ import { WaveDivider } from "@/components/ui/WaveDivider";
 export default function Page() {
   return (
     <div className="space-y-10">
-      <CaseTopBar title="Look" />
+      <CaseTopBar title="Look" figmaHref="https://t.me/wellook_bot" linkLabel="Telegram App"/>
       <CaseHero src="/projects/look-hero.png" />
 
       <article className="space-y-12">
