@@ -1,6 +1,7 @@
 import { Link } from "../ui/Link";
 import { TextBlock } from "@/components/ui/TextBlock";
 import { MediaBlock } from "@/components/ui/MediaBlock";
+import NextLink from "next/link";
 
 type Project = {
   href: string;
@@ -17,9 +18,13 @@ export function ProjectBlock({ p }: { p: Project }) {
     <section className="space-y-4">
       {/* title + meta */}
       <div className="flex flex-wrap items-baseline gap-x-4 gap-y-2">
-        <p className="t-title ty-title">
-          {p.title}
-        </p>
+        {p.figmaHref ? (
+          <Link href={p.figmaHref} variant="up-right">
+            <span className="t-title ty-title">{p.title}</span>
+          </Link>
+        ) : (
+          <p className="t-title ty-title">{p.title}</p>
+        )}
 
         <p className="t-accent ty-body">{p.meta}</p>
       </div>
@@ -28,26 +33,26 @@ export function ProjectBlock({ p }: { p: Project }) {
       <TextBlock>{p.description}</TextBlock>
 
       {/* роль/вклад + ссылка "Описание →" */}
+
       <TextBlock>
         {p.note}{" "}
-        <Link href={p.href} variant="right">
-          Описание
-        </Link>
+
       </TextBlock>
-
-      {/* figma */}
-      {p.figmaHref ? (
-
-        <Link href={p.figmaHref} variant="up-right">
-          Figma
-        </Link>
-      ) : null}
 
       {/* media */}
       {p.media?.length ? (
-        <div className="mt-[-24]">
+        <NextLink
+          href={p.href}
+          target="_blank"
+          className="group relative block mt-[-24px]"
+          aria-label={`Открыть кейс: ${p.title}`}
+        >
+          <span className="pointer-events-none absolute right-4 top-10 z-10 text-[#0033ff] text-[24px] transition-transform duration-200 group-hover:scale-80 group-hover:rotate-45">
+            ↗
+          </span>
+
           <MediaBlock items={p.media as any} fullWidth />
-        </div>
+        </NextLink>
       ) : null}
     </section>
   );

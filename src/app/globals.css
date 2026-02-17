@@ -44,21 +44,21 @@ img {
   .t-title {
     @apply font-semibold text-[#0033FF];
     font-size: 22px;
-    line-height: 160%;
+    line-height: 150%;
   }
 
   /* Акцентный текст (черный) */
   .t-accent {
     @apply font-normal text-black;
     font-size: 20px;
-    line-height: 160%;
+    line-height: 150%;
   }
 
   /* Наборный текст (черный 60%) */
   .t-body {
     @apply font-normal;
     font-size: 20px;
-    line-height: 160%;
+    line-height: 150%;
     color: rgba(0, 0, 0, 0.6);
   }
 
@@ -73,7 +73,7 @@ img {
 
   .t-list li {
     font-size: 20px;
-    line-height: 160%;
+    line-height: 150%;
     color: rgba(0, 0, 0, 0.6);
     margin-bottom: 8px;
   }
