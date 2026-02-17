@@ -25,6 +25,19 @@ body {
   --font-mono: var(--font-geist-mono);
 }
 
+img {
+  -webkit-user-drag: none;
+}
+
+img::-webkit-media-controls-panel {
+  display: none !important;
+}
+
+img {
+  pointer-events: none;
+}
+
+
 @layer components {
 
   /* Заголовок (синий) */

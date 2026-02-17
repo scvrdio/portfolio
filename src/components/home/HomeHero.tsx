@@ -15,11 +15,11 @@ export function HomeHero() {
       />
 
       {/* links row */}
-      <div className="flex flex-wrap items-baseline gap-x-10 gap-y-2">
+      <div className="flex flex-wrap items-baseline gap-x-8 gap-y-0">
         <p className="t-title ty-title hover:underline">
           Серёжа Ивлев
         </p>
-
+        <div className="flex flex-col sm:flex-row gap-4 sm:gap-x-8 mt-4">
         <a
           href="https://drive.google.com/file/d/1n7OB6XH48o5YIqdLwqVIowm41XCQs3EM/view"
           target="_blank"
@@ -44,18 +44,15 @@ export function HomeHero() {
         >
           ivlev.serezha@gmail.com
         </a>
+        </div>
       </div>
 
       {/* text */}
-      <div className="space-y-3">
+      <div className="mt-[-4] mb-[-16]">
         <p className="t-body ty-body">
           Продуктовый дизайнер с 3+ годами опыта в web-3, fintech и edtech продуктах. Рисую мобильные приложения для B2C.
-        </p>
-        <p className="t-body ty-body">
-          Высшее образование ИТМО в области программирования.
-        </p>
-        <p className="t-body ty-body">
-          Нахожусь в активном поиске новых вызовов.
+        <span className="pbreak" />Высшее образование ИТМО в области программирования.
+        <span className="pbreak" />Нахожусь в активном поиске новых вызовов.
         </p>
       </div>
     </section>
