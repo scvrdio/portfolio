@@ -16,7 +16,7 @@ export function HomeHero() {
 
       {/* links row */}
       <div className="flex flex-wrap items-baseline gap-x-10 gap-y-2">
-        <p className="t-title hover:underline">
+        <p className="t-title ty-title hover:underline">
           Серёжа Ивлев
         </p>
 
@@ -24,7 +24,7 @@ export function HomeHero() {
           href="/cv.pdf"
           target="_blank"
           rel="noreferrer"
-          className="t-accent hover:underline"
+          className="t-accent ty-body hover:underline"
         >
           CV ↗
         </a>
@@ -33,14 +33,14 @@ export function HomeHero() {
           href="https://t.me/USERNAME"
           target="_blank"
           rel="noreferrer"
-          className="t-accent hover:underline"
+          className="t-accent ty-body hover:underline"
         >
           Telegram ↗
         </a>
 
         <a
           href="mailto:ivlev.serezha@gmail.com"
-          className="t-accent hover:underline"
+          className="t-accent ty-body hover:underline"
         >
           ivlev.serezha@gmail.com
         </a>
@@ -48,13 +48,13 @@ export function HomeHero() {
 
       {/* text */}
       <div className="space-y-3">
-        <p className="t-body">
-          Продуктовый дизайнер с 3+ годами опыта в web-3, fintech и edtech продуктах. Рисую мобильные приложения для b2c.
+        <p className="t-body ty-body">
+          Продуктовый дизайнер с 3+ годами опыта в web-3, fintech и edtech продуктах. Рисую мобильные приложения для B2C.
         </p>
-        <p className="t-body">
+        <p className="t-body ty-body">
           Высшее образование ИТМО в области программирования.
         </p>
-        <p className="t-body">
+        <p className="t-body ty-body">
           Нахожусь в активном поиске новых вызовов.
         </p>
       </div>

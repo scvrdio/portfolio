@@ -16,12 +16,12 @@ export function ProjectBlock({ p }: { p: Project }) {
   return (
     <section className="space-y-4">
       {/* title + meta */}
-      <div className="flex flex-wrap items-baseline gap-x-8 gap-y-2">
-        <Link href={p.href} className="t-title hover:underline">
+      <div className="flex flex-wrap items-baseline gap-x-4 gap-y-2">
+        <Link href={p.href} className="t-title ty-title hover:underline">
           {p.title}
         </Link>
 
-        <p className="t-accent">{p.meta}</p>
+        <p className="t-accent ty-body">{p.meta}</p>
       </div>
 
       {/* описание */}
@@ -30,7 +30,7 @@ export function ProjectBlock({ p }: { p: Project }) {
       {/* роль/вклад + ссылка "Описание →" */}
       <TextBlock>
         {p.note}{" "}
-        <Link href={p.href} className="t-accent hover:underline">
+        <Link href={p.href} className="t-accent ty-body hover:underline">
           Описание →
         </Link>
       </TextBlock>
@@ -41,7 +41,7 @@ export function ProjectBlock({ p }: { p: Project }) {
           href={p.figmaHref}
           target="_blank"
           rel="noreferrer"
-          className="t-accent inline-block hover:underline"
+          className="t-accent ty-body inline-block hover:underline"
         >
           Figma ↗
         </a>

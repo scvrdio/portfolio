@@ -4,10 +4,25 @@
   color-scheme: only light;
 }
 
+@font-face {
+  font-family: "TikTok Sans";
+  src: url("/fonts/TikTokSans-Variable.ttf") format("truetype");
+  font-weight: 300 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 html,
 body {
   background: #fff;
   color: #171717;
+  font-feature-settings: "cv04" 1;
+}
+
+@theme inline {
+  --font-geist-sans: "TikTok Sans";
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
 }
 
 @layer components {
@@ -15,7 +30,7 @@ body {
   /* Заголовок (синий) */
   .t-title {
     @apply font-semibold text-[#0033FF];
-    font-size: 20px;
+    font-size: 22px;
     line-height: 160%;
   }
 
@@ -48,6 +63,15 @@ body {
     line-height: 160%;
     color: rgba(0, 0, 0, 0.6);
     margin-bottom: 8px;
+  }
+
+  .ty-title {
+    font-variation-settings: "wdth" 75, "wght" 700, "opsz" 32;
+    letter-spacing: -0.01em;
+  }
+  
+  .ty-body {
+    font-variation-settings: "wdth" 95, "wght" 400, "opsz" 18;
   }
 
 }

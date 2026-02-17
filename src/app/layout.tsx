@@ -3,8 +3,8 @@ import type { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
 
 export const metadata: Metadata = {
-  title: "Portfolio",
-  description: "Portfolio",
+  title: "Серёжа Ивлев",
+  description: "Портфолио",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

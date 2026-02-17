@@ -46,7 +46,7 @@ export function MediaBlock({
     const defaultItemClassName = count === 1 ? "w-full" : count === 2 ? "basis-1/2" : "basis-1/3";
 
     return (
-        <div className="flex w-full justify-center">
+        <div className="flex w-full justify-center py-8">
             <div className={wrapperClassName}>
                 {items.map((it, idx) => {
                     const itemClassName = isSingle ? "w-full" : it.itemClassName ?? defaultItemClassName;

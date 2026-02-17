@@ -5,7 +5,7 @@ function MetricPill({ title, value }: { title: string; value: string }) {
     <div className="inline-flex flex-col items-start">
       {/* верхняя капсула */}
       <div className="relative z-10 inline-flex items-center rounded-[24px] border border-[#0033FF] bg-white px-2 py-[2px]">
-        <span className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#0033FF]">
+        <span className="text-[12px] font-bold uppercase tracking-[0.15em] text-[#0033FF]">
           {title}
         </span>
       </div>

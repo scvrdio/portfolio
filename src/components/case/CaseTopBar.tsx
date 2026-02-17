@@ -9,8 +9,8 @@ export function CaseTopBar(props: {
 
   return (
     <div className="flex items-center justify-between gap-4">
-      <Link href={backHref} className="t-title hover:underline">
-        ← <span className="t-title">{props.title}</span>
+      <Link href={backHref} className="t-title ty-title hover:underline">
+        ← <span className="t-title ty-title">{props.title}</span>
       </Link>
 
       {props.figmaHref ? (
@@ -18,7 +18,7 @@ export function CaseTopBar(props: {
           href={props.figmaHref}
           target="_blank"
           rel="noreferrer"
-          className="t-accent hover:underline"
+          className="t-accent ty-body hover:underline"
         >
           Figma ↗
         </a>
