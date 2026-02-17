@@ -35,7 +35,7 @@ export function HomeHero() {
       </div>
 
       {/* text */}
-      <div className="mt-[-4] mb-[-16]">
+      <div className="mt-[-8] mb-[-16]">
         <div className="t-body ty-body">
           <p>
             Продуктовый дизайнер с 3+ годами опыта в web-3, fintech и edtech продуктах. Рисую мобильные приложения для B2C.
@@ -46,7 +46,7 @@ export function HomeHero() {
           <p>
             Нахожусь в активном поиске новых вызовов.
             <span className="inline-block align-baseline ml-1">
-              <img src="/warrior.svg" alt="" className="inline-block h-[1.1em] w-auto align-[-0.15em]" />
+              <img src="/warrior.svg" alt="" className="inline-block h-[1.2em] w-auto align-[-0.15em]" />
             </span>
           </p>
         </div>
