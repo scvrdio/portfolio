@@ -169,21 +169,26 @@ function VideoPlayer({
                 <input
                     type="range"
                     min={0}
-                    max={duration}
+                    max={Math.max(0, duration)}
                     step={0.01}
                     value={shownValue}
-                    disabled={!isReady}
-                    onPointerDown={() => {
-                        setIsScrubbing(true);
-                        setScrubValue(current);
-                    }}
-                    onChange={(e) => setScrubValue(Number(e.target.value))}
-                    onPointerUp={() => {
-                        setIsScrubbing(false);
-                        commitSeek(scrubValue);
-                    }}
+                    disabled={!isReady || duration <= 0}
                     style={{ ["--range-p" as any]: percent }}
                     className="videoRange flex-1"
+                    onPointerDown={(e) => {
+                        setIsScrubbing(true);
+                        const el = e.currentTarget;
+                        setScrubValue(el.valueAsNumber); // берем реальное значение инпута
+                    }}
+                    onInput={(e) => {
+                        const el = e.currentTarget;
+                        setScrubValue(el.valueAsNumber); // обновляем во время движения пальца
+                    }}
+                    onPointerUp={(e) => {
+                        const el = e.currentTarget;
+                        setIsScrubbing(false);
+                        commitSeek(el.valueAsNumber); // коммитим из инпута, не из стейта
+                    }}
                 />
 
                 <div className="text-right t-body ty-body text-[14px] pl-4 tabular-nums text-black/60">
