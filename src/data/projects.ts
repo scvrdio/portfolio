@@ -26,6 +26,12 @@ export const projects: Project[] = [
     meta: "Product Designer · Янв 2025 — Окт 2025",
     description: "Приложение для быстрого деления чеков между людьми с использованием компьютерного зрения и ML-алгоритмов.",
     note: "Нарисовал дизайн, улучшил флоу деления чека и подключения СБП.",
+    metrics: [
+      { label: "CR", value: "64%" },
+      { label: "RR30", value: "57%" },
+      { label: "MAU", value: "+38%" },
+      { label: "AVG ЧЕКОВ НА ЮЗЕРА", value: "5.1 / мес" },
+    ],
     figmaHref: "https://www.figma.com/design/YSb8QXs053NIUCRF9qtqTV/%D0%9F%D0%BE%D0%BF%D0%BE%D0%BB%D0%B0%D0%BC?node-id=0-1&t=4xq48AqBtQE5TY0X-1",
     media: [
       {
@@ -44,6 +50,12 @@ export const projects: Project[] = [
     meta: "Product Designer · Сен 2022 — Дек 2024",
     description: "Web-3 платформа мини-игр в Telegram с месячной аудиторией 5М+ пользователей.",
     note: "Разработал дизайн и репозиционирование на web-2 аудиторию, улучшил конверсию в пополнение, фокусировался на активации и ретеншене.",
+    metrics: [
+      { label: "DAU", value: "+4% в день" },
+      { label: "RR30", value: "42%" },
+      { label: "CR", value: "27%" },
+      { label: "ОБРАЩЕНИЯ В ТП", value: "-70%" },
+    ],
     media: [
       {
         type: "image",

@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import NextLink from "next/link";
 import Image from "next/image";
 import { Link } from "../ui/Link";
+import { MetricPills } from "@/components/ui/MetricPills";
 import { TextBlock } from "@/components/ui/TextBlock";
 import { MediaBlock } from "@/components/ui/MediaBlock";
 import type { Project } from "@/types/project";
@@ -70,6 +71,7 @@ export function ProjectBlock({ p }: { p: Project }) {
 
       <TextBlock>{p.description}</TextBlock>
       <TextBlock>{p.note}</TextBlock>
+      {p.metrics?.length ? <MetricPills items={p.metrics} /> : null}
 
       {p.media?.length ? (
         <NextLink href={p.href} className="group relative block" aria-label={`Открыть кейс: ${p.title}`} onClick={handleOpenCase}>
