@@ -68,7 +68,7 @@ img {
 
   .pbreak {
     display: block;
-    height: 12px;
+    height: 10px;
   }
 
   .t-list {
@@ -216,5 +216,15 @@ video::-webkit-media-controls {
     opacity: 1;
     transform: translateY(0);
     filter: blur(0);
+  }
+}
+
+@keyframes case-arrow-float {
+  0%,
+  100% {
+    transform: translateY(-0.5px);
+  }
+  50% {
+    transform: translateY(0.5px);
   }
 }

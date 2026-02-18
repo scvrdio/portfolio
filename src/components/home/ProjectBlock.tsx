@@ -117,7 +117,7 @@ export function ProjectBlock({ p }: { p: Project }) {
         <NextLink href={p.href} className="group relative block" aria-label={`Открыть кейс: ${p.title}`} onClick={handleOpenCase}>
           <div data-case-hero-source={slug ?? undefined} className="relative mt-8">
             <span className="pointer-events-none absolute left-1/2 top-0 z-10 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white border-2 bg-[#f8f8f8] px-2 py-1 text-[12px] font-semibold leading-none text-black/60">
-              О проекте ↓
+              О проекте <span className="inline-block motion-safe:[animation:case-arrow-float_1.6s_ease-in-out_infinite]">↓</span>
             </span>
             {hasSimpleStaticHero && hero ? (
               <div className="overflow-hidden rounded-2xl bg-neutral-100">

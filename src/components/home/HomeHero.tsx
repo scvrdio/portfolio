@@ -30,7 +30,7 @@ export function HomeHero() {
         </div>
       </div>
 
-      <div className="mt-[-8] mb-[-16]">
+      <div className="mb-[-16]">
         <div className="t-body ty-body">
           <p>
             Продуктовый дизайнер с 3+ годами опыта в web-3, fintech и funtech продуктах. Рисую мобильные приложения для B2C.
