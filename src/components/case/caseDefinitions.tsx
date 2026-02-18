@@ -8,6 +8,8 @@ type CaseDefinition = {
   figmaHref?: string;
   linkLabel?: string;
   heroSrc: string;
+  heroWidth: number;
+  heroHeight: number;
   render: () => ReactNode;
 };
 
@@ -16,20 +18,26 @@ export const caseDefinitions = {
     title: "Look",
     figmaHref: "https://t.me/wellook_bot",
     linkLabel: "Telegram App",
-    heroSrc: "/projects/look-hero.png",
+    heroSrc: "/projects/look-hero.png?v=20260218",
+    heroWidth: 2016,
+    heroHeight: 1310,
     render: () => <LookCaseContent />,
   },
   popolam: {
     title: "Popolam",
     figmaHref:
       "https://www.figma.com/design/YSb8QXs053NIUCRF9qtqTV/%D0%9F%D0%BE%D0%BF%D0%BE%D0%BB%D0%B0%D0%BC?node-id=0-1&t=ie10ciZHeCxHMfsz-1",
-    heroSrc: "/projects/popolam-hero.png",
+    heroSrc: "/projects/popolam-hero.png?v=20260218",
+    heroWidth: 2016,
+    heroHeight: 1310,
     render: () => <PopolamCaseContent />,
   },
   terminal: {
     title: "Terminal",
     figmaHref: "#",
-    heroSrc: "/projects/terminal-hero.png",
+    heroSrc: "/projects/terminal-hero.png?v=20260218",
+    heroWidth: 2016,
+    heroHeight: 1316,
     render: () => <TerminalCaseContent />,
   },
 } satisfies Record<string, CaseDefinition>;

@@ -33,7 +33,7 @@ export function HomeHero() {
       <div className="mt-[-8] mb-[-16]">
         <div className="t-body ty-body">
           <p>
-            Продуктовый дизайнер с 3+ годами опыта в web-3, fintech и edtech продуктах. Рисую мобильные приложения для B2C.
+            Продуктовый дизайнер с 3+ годами опыта в web-3, fintech и funtech продуктах. Рисую мобильные приложения для B2C.
             <span className="pbreak" />Высшее образование ИТМО в области программирования.
             <span className="pbreak" />
           </p>

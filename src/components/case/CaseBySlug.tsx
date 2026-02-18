@@ -13,7 +13,10 @@ export function CaseBySlug({ slug, isModal }: { slug: string; isModal?: boolean 
       title={definition.title}
       figmaHref={definition.figmaHref}
       linkLabel={definition.linkLabel}
+      slug={slug}
       heroSrc={definition.heroSrc}
+      heroWidth={definition.heroWidth}
+      heroHeight={definition.heroHeight}
       isModal={isModal}
     >
       {definition.render()}

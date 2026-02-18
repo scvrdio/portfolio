@@ -164,3 +164,32 @@ video::-webkit-media-controls {
 .modal-scroll-hidden::-webkit-scrollbar {
   display: none;
 }
+
+.case-typewriting {
+  --type-delay: 0ms;
+}
+
+.case-typewriting :is(.t-title, .t-accent, .t-body, .t-list li) {
+  opacity: 0;
+  transform: translateY(10px);
+  filter: blur(20px);
+}
+
+.case-typewriting--run :is(.t-title, .t-accent, .t-body, .t-list li) {
+  animation: case-typewriting-reveal 300ms ease-out forwards;
+  animation-delay: var(--type-delay, 0ms);
+}
+
+@keyframes case-typewriting-reveal {
+  0% {
+    filter: blur(20px);
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  100% {
+    filter: blur(0);
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

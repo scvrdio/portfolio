@@ -12,10 +12,10 @@ export const projects: Project[] = [
     media: [
       {
         type: "image",
-        src: "/projects/look-hero.png",
+        src: "/projects/look-hero.png?v=20260218",
         mode: "static",
-        width: 2000,
-        height: 1200,
+        width: 2016,
+        height: 1310,
         priority: true,
       },
     ],
@@ -30,10 +30,10 @@ export const projects: Project[] = [
     media: [
       {
         type: "image",
-        src: "/projects/popolam-hero.png",
+        src: "/projects/popolam-hero.png?v=20260218",
         mode: "static",
-        width: 2000,
-        height: 1200,
+        width: 2016,
+        height: 1310,
         priority: true,
       },
     ],
@@ -47,10 +47,10 @@ export const projects: Project[] = [
     media: [
       {
         type: "image",
-        src: "/projects/terminal-hero.png",
+        src: "/projects/terminal-hero.png?v=20260218",
         mode: "static",
-        width: 2000,
-        height: 1200,
+        width: 2016,
+        height: 1316,
         priority: true,
       },
     ],
