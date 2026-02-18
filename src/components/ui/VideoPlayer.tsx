@@ -1,6 +1,5 @@
 "use client";
 
-import type { CSSProperties } from "react";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
@@ -16,6 +15,9 @@ function formatTime(sec: number) {
 export function VideoPlayer({
   src,
   poster,
+  playbackRate = 1,
+  segmentDuration = 2,
+  showSegmentControls = true,
   autoPlay,
   loop,
   muted,
@@ -24,6 +26,9 @@ export function VideoPlayer({
 }: {
   src: string;
   poster?: string;
+  playbackRate?: number;
+  segmentDuration?: number;
+  showSegmentControls?: boolean;
   autoPlay: boolean;
   loop: boolean;
   muted: boolean;
@@ -35,20 +40,13 @@ export function VideoPlayer({
 
   const [duration, setDuration] = useState(0);
   const [current, setCurrent] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(false);
   const [isReady, setIsReady] = useState(false);
-
-  const [isScrubbing, setIsScrubbing] = useState(false);
-  const [scrubValue, setScrubValue] = useState(0);
 
   useEffect(() => {
     function update() {
       const video = videoRef.current;
       if (!video) return;
-
-      if (!isScrubbing) {
-        setCurrent(video.currentTime);
-      }
+      setCurrent(video.currentTime);
 
       rafRef.current = requestAnimationFrame(update);
     }
@@ -60,7 +58,7 @@ export function VideoPlayer({
         cancelAnimationFrame(rafRef.current);
       }
     };
-  }, [isScrubbing]);
+  }, []);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -73,26 +71,26 @@ export function VideoPlayer({
     const onLoaded = () => {
       setDuration(video.duration || 0);
       setIsReady(true);
-      setIsPlaying(!video.paused);
     };
-
-    const onPlay = () => setIsPlaying(true);
-    const onPause = () => setIsPlaying(false);
 
     video.addEventListener("enterpictureinpicture", onEnterPip);
     video.addEventListener("loadedmetadata", onLoaded);
-    video.addEventListener("play", onPlay);
-    video.addEventListener("pause", onPause);
 
     if (video.readyState >= 1) onLoaded();
 
     return () => {
       video.removeEventListener("enterpictureinpicture", onEnterPip);
       video.removeEventListener("loadedmetadata", onLoaded);
-      video.removeEventListener("play", onPlay);
-      video.removeEventListener("pause", onPause);
     };
   }, []);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const safeRate = Number.isFinite(playbackRate) ? playbackRate : 1;
+    video.playbackRate = safeRate;
+  }, [playbackRate]);
 
   function togglePlay() {
     const video = videoRef.current;
@@ -106,16 +104,32 @@ export function VideoPlayer({
     video.pause();
   }
 
-  function commitSeek(value: number) {
+  function seekToSegment(index: number) {
     const video = videoRef.current;
-    if (!video) return;
+    if (!video || duration <= 0) return;
 
-    video.currentTime = value;
-    setCurrent(value);
+    const segmentStart = Math.min(index * safeSegmentDuration, Math.max(duration - 0.01, 0));
+    video.currentTime = segmentStart;
+    setCurrent(segmentStart);
   }
 
-  const shownValue = isScrubbing ? scrubValue : current;
-  const percent = duration > 0 ? `${(shownValue / duration) * 100}%` : "0%";
+  function seekPrevSegment() {
+    if (duration <= 0) return;
+    const currentSegmentIndex = Math.floor(current / safeSegmentDuration);
+    seekToSegment(Math.max(0, currentSegmentIndex - 1));
+  }
+
+  function seekNextSegment() {
+    if (duration <= 0) return;
+    const currentSegmentIndex = Math.floor(current / safeSegmentDuration);
+    seekToSegment(Math.min(totalSegments - 1, currentSegmentIndex + 1));
+  }
+
+  const safeSegmentDuration =
+    Number.isFinite(segmentDuration) && segmentDuration > 0 ? segmentDuration : 2;
+  const totalSegments = duration > 0 ? Math.ceil(duration / safeSegmentDuration) : 0;
+  const renderedSegments = Math.max(totalSegments, 1);
+  const canSeek = isReady && duration > 0;
 
   return (
     <div className="flex flex-col">
@@ -132,49 +146,78 @@ export function VideoPlayer({
         disablePictureInPicture
         controlsList="nodownload nofullscreen noremoteplayback"
         className={className}
+        onClick={togglePlay}
       />
 
-      <div className="mt-3 pr-5 flex items-center gap-1">
-        <button
-          onClick={togglePlay}
-          disabled={!isReady}
-          className="h-11 w-11 rounded-full flex items-center justify-center disabled:opacity-40"
-        >
-          <Image
-            src={isPlaying ? "/icones/pause-fill.svg" : "/icones/play-fill.svg"}
-            className="w-8 h-8"
-            width={32}
-            height={32}
-            alt=""
-          />
-        </button>
+      {showSegmentControls ? (
+        <div className="mt-3 pr-5 flex items-center gap-1">
+          <button
+            type="button"
+            onClick={seekPrevSegment}
+            disabled={!canSeek}
+            className="h-11 w-11 rounded-full flex items-center justify-center disabled:opacity-40"
+            aria-label="Previous segment"
+          >
+            <Image
+              src="/icones/rewind-fill.svg"
+              className="w-8 h-8"
+              width={32}
+              height={32}
+              alt=""
+            />
+          </button>
 
-        <input
-          type="range"
-          min={0}
-          max={Math.max(0, duration)}
-          step={0.01}
-          value={shownValue}
-          disabled={!isReady || duration <= 0}
-          style={{ "--range-p": percent } as CSSProperties}
-          className="videoRange flex-1"
-          onPointerDown={(event) => {
-            setIsScrubbing(true);
-            setScrubValue(event.currentTarget.valueAsNumber);
-          }}
-          onInput={(event) => {
-            setScrubValue(event.currentTarget.valueAsNumber);
-          }}
-          onPointerUp={(event) => {
-            setIsScrubbing(false);
-            commitSeek(event.currentTarget.valueAsNumber);
-          }}
-        />
+          <div className="videoRangeWrap flex-1">
+            <div className="videoRangeTrack">
+              {Array.from({ length: renderedSegments }).map((_, index) => (
+                <button
+                  key={index}
+                  type="button"
+                  className="videoRangeSegment"
+                  onClick={() => seekToSegment(index)}
+                  disabled={!canSeek || index >= totalSegments}
+                  aria-label={`Seek to ${formatTime(index * safeSegmentDuration)}`}
+                >
+                  {(() => {
+                    const segmentStart = index * safeSegmentDuration;
+                    const segmentLength = Math.max(
+                      0.0001,
+                      Math.min(safeSegmentDuration, Math.max(duration - segmentStart, 0)),
+                    );
+                    const fillPercent = Math.max(
+                      0,
+                      Math.min(100, ((current - segmentStart) / segmentLength) * 100),
+                    );
 
-        <div className="text-right t-body ty-body text-[14px] pl-4 tabular-nums text-black/60">
-          {formatTime(shownValue)} / {formatTime(duration)}
+                    return (
+                      <div
+                        className="videoRangeSegmentFill"
+                        style={{ width: `${fillPercent}%` }}
+                      />
+                    );
+                  })()}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <button
+            type="button"
+            onClick={seekNextSegment}
+            disabled={!canSeek}
+            className="h-11 w-11 rounded-full flex items-center justify-center disabled:opacity-40"
+            aria-label="Next segment"
+          >
+            <Image
+              src="/icones/forward-fill.svg"
+              className="w-8 h-8"
+              width={32}
+              height={32}
+              alt=""
+            />
+          </button>
         </div>
-      </div>
+      ) : null}
     </div>
   );
 }

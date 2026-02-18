@@ -2,6 +2,58 @@
 
 import { useEffect, useState } from "react";
 
+function getTextNodes(element: HTMLElement): Text[] {
+  const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+  const result: Text[] = [];
+
+  let current = walker.nextNode();
+  while (current) {
+    result.push(current as Text);
+    current = walker.nextNode();
+  }
+
+  return result;
+}
+
+function wordifyElement(element: HTMLElement, startWordIndex: number): number {
+  if (element.dataset.wordified === "true") {
+    return startWordIndex;
+  }
+
+  const textNodes = getTextNodes(element);
+  let wordIndex = startWordIndex;
+
+  textNodes.forEach((textNode) => {
+    const value = textNode.nodeValue ?? "";
+    if (!value.trim()) return;
+
+    const parts = value.split(/(\s+)/);
+    const fragment = document.createDocumentFragment();
+
+    parts.forEach((part) => {
+      if (!part) return;
+
+      if (/^\s+$/.test(part)) {
+        fragment.appendChild(document.createTextNode(part));
+        return;
+      }
+
+      const span = document.createElement("span");
+      span.className = "case-word";
+      span.style.setProperty("--word-delay", `${wordIndex * 25}ms`);
+      span.textContent = part;
+      fragment.appendChild(span);
+      wordIndex += 1;
+    });
+
+    textNode.parentNode?.replaceChild(fragment, textNode);
+  });
+
+  element.classList.add("case-first-word");
+  element.dataset.wordified = "true";
+  return wordIndex;
+}
+
 export function DeferredCaseContent({
   children,
   delayMs = 280,
@@ -38,9 +90,23 @@ export function DeferredCaseContent({
   useEffect(() => {
     if (!isVisible || !root) return;
 
-    const textNodes = root.querySelectorAll<HTMLElement>(".t-title, .t-accent, .t-body, .t-list li");
-    textNodes.forEach((node, index) => {
-      node.style.setProperty("--type-delay", `${index * 130}ms`);
+    const firstSection = root.querySelector("section");
+    const firstSectionText = firstSection?.querySelectorAll<HTMLElement>(
+      ".t-title, .t-accent, .t-body, .t-list li",
+    );
+
+    let wordIndex = 0;
+    firstSectionText?.forEach((node) => {
+      wordIndex = wordifyElement(node, wordIndex);
+    });
+
+    const textNodes = root.querySelectorAll<HTMLElement>(
+      ".t-title, .t-accent, .t-body, .t-list li",
+    );
+
+    textNodes.forEach((node) => {
+      if (firstSection?.contains(node)) return;
+      node.classList.add("case-instant");
     });
   }, [isVisible, root]);
 

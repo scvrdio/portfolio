@@ -40,6 +40,7 @@ export function LookCaseContent() {
               autoPlay: true,
               loop: true,
               muted: true,
+              segmentDuration: 2.01,
             },
           ]}
         />

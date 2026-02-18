@@ -3,6 +3,16 @@ import { Section } from "@/components/ui/Section";
 import { TextBlock } from "@/components/ui/TextBlock";
 import { MediaBlock } from "@/components/ui/MediaBlock";
 
+function TerminalMediaBlock(props: Parameters<typeof MediaBlock>[0]) {
+  return (
+    <MediaBlock
+      {...props}
+      defaultVideoPlaybackRate={1}
+      showSegmentControls={false}
+    />
+  );
+}
+
 export function TerminalCaseContent() {
   return (
     <>
@@ -31,7 +41,7 @@ export function TerminalCaseContent() {
             Разработал игру-головоломку, где пользователи разгадывали шифр и получали очки, конвертируемые в вознаграждение. Добавил систему ранжирования и подсчета очков. Провел сбор пользовательского и фидбека и анализ рынка.
           </TextBlock>
 
-          <MediaBlock
+          <TerminalMediaBlock
             fullWidth
             items={[
               {
@@ -76,7 +86,7 @@ export function TerminalCaseContent() {
             <span className="pbreak" /> В первую очередь создал раздел с мини-играми, в который добавил первые три игры: «Монетка» — флагман приложения, созданный инхаус, а также нативно интегрированные из других приложений «Дурак» и «Покер».
           </TextBlock>
 
-          <MediaBlock
+          <TerminalMediaBlock
             items={[
               {
                 type: "video",
@@ -95,7 +105,7 @@ export function TerminalCaseContent() {
             <span className="pbreak" /> Создал маркетинговый флоу, позволяющий пользователю забрать бесплатный выигрыш для игры в Монетку, а также демо-версию для безопасного теста механики игры.
           </TextBlock>
 
-          <MediaBlock
+          <TerminalMediaBlock
             items={[
               {
                 type: "video",
@@ -119,7 +129,7 @@ export function TerminalCaseContent() {
             После добавления мини-игр, создал страницу с получением ежедневного бонуса, который можно потратить на активацию Модов, дающих пользователям бенефиты в играх. Здесь же добавил возможность увеличить выигрыш с помощью механики 50/50 — удвоил бонус или проиграл его.
           </TextBlock>
 
-          <MediaBlock
+          <TerminalMediaBlock
             items={[
               {
                 type: "image",
@@ -143,7 +153,7 @@ export function TerminalCaseContent() {
             Страница Модов представляет пользователям возможность купить обычные Моды, а также лимитированные — с особыми условиями и ограничением по сроку действия.
           </TextBlock>
 
-          <MediaBlock
+          <TerminalMediaBlock
             items={[
               {
                 type: "video",
@@ -162,7 +172,7 @@ export function TerminalCaseContent() {
             <span className="pbreak" />На странице профиля пользователь может пригласить друзей по реферальной ссылке и получать пассивный доход с их пополнений. Здесь же находятся настройки приложения, ссылки на ТП, гайд, соц. сети и CTA на покупку NFT из коллекции, так же дающей особые условия.
           </TextBlock>
 
-          <MediaBlock
+          <TerminalMediaBlock
             items={[
               {
                 type: "image",
@@ -182,7 +192,7 @@ export function TerminalCaseContent() {
             <span className="pbreak" />После реализации гайда и оптимизации флоу, количество обращений в ТП, связанных с транзакциями, снизилось на 70%.
           </TextBlock>
 
-          <MediaBlock
+          <TerminalMediaBlock
             items={[
               {
                 type: "video",
@@ -211,7 +221,7 @@ export function TerminalCaseContent() {
             Создал анимированные онбординги с использованием lottie-анимаций. Они появляются перед входом в приложение, а также при открытии новых страниц и механик.
           </TextBlock>
 
-          <MediaBlock
+          <TerminalMediaBlock
             items={[
               {
                 type: "video",
@@ -252,3 +262,4 @@ export function TerminalCaseContent() {
     </>
   );
 }
+

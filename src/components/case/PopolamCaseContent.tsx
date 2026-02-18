@@ -47,12 +47,13 @@ export function PopolamCaseContent() {
                 loop: true,
                 muted: true,
                 controls: false,
+                segmentDuration: 1.51,
               },
             ]}
           />
 
           <TextBlock>
-            Затем создал главную страницу, на которой всегда отображается номер телефона и CTA на подключение СБП или банк СБП, если он уже подключен. Главная состоит из трех табов: События, Чеки и Бронирование.
+            Cоздал главную страницу, на которой всегда отображается номер телефона и CTA на подключение СБП или банк СБП, если он уже подключен. Главная состоит из трех табов: События, Чеки и Бронирование.
           </TextBlock>
 
           <MediaBlock
@@ -65,6 +66,7 @@ export function PopolamCaseContent() {
                 loop: true,
                 muted: true,
                 controls: false,
+                segmentDuration: 1.52,
               },
             ]}
           />
@@ -83,6 +85,7 @@ export function PopolamCaseContent() {
                 loop: true,
                 muted: true,
                 controls: false,
+                segmentDuration: 1.51,
               },
             ]}
           />
@@ -103,6 +106,7 @@ export function PopolamCaseContent() {
                 loop: true,
                 muted: true,
                 controls: false,
+                segmentDuration: 1.51,
               },
             ]}
           />
@@ -121,6 +125,7 @@ export function PopolamCaseContent() {
                 loop: true,
                 muted: true,
                 controls: false,
+                segmentDuration: 1.51,
               },
             ]}
           />
@@ -167,6 +172,7 @@ export function PopolamCaseContent() {
                 loop: true,
                 muted: true,
                 controls: false,
+                segmentDuration: 1.52,
               },
             ]}
           />
@@ -186,6 +192,7 @@ export function PopolamCaseContent() {
                 loop: true,
                 muted: true,
                 controls: false,
+                segmentDuration: 1.52,
               },
             ]}
           />

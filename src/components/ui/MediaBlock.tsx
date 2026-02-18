@@ -5,9 +5,13 @@ import type { MediaItem } from "@/types/media";
 export function MediaBlock({
   items,
   fullWidth = false,
+  defaultVideoPlaybackRate = 0.5,
+  showSegmentControls = true,
 }: {
   items: MediaItem[];
   fullWidth?: boolean;
+  defaultVideoPlaybackRate?: number;
+  showSegmentControls?: boolean;
 }) {
   const count = items.length;
   const isSingle = count === 1;
@@ -78,6 +82,9 @@ export function MediaBlock({
                 <VideoPlayer
                   src={item.src}
                   poster={item.poster}
+                  playbackRate={item.playbackRate ?? defaultVideoPlaybackRate}
+                  segmentDuration={item.segmentDuration}
+                  showSegmentControls={showSegmentControls}
                   autoPlay={item.autoPlay ?? true}
                   loop={item.loop ?? true}
                   muted={item.muted ?? true}

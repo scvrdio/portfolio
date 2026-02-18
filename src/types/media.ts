@@ -19,6 +19,8 @@ export type VideoMediaItem = MediaCommon & {
   type: "video";
   src: string;
   poster?: string;
+  playbackRate?: number;
+  segmentDuration?: number;
   autoPlay?: boolean;
   loop?: boolean;
   muted?: boolean;
