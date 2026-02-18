@@ -1,4 +1,6 @@
-export const projects = [
+import type { Project } from "@/types/project";
+
+export const projects: Project[] = [
   {
     href: "/look",
     title: "Look",
@@ -54,4 +56,4 @@ export const projects = [
     ],
   },
 
-] as const;
+];

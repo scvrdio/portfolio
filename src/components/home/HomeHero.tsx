@@ -4,7 +4,6 @@ import { Link } from "../ui/Link";
 export function HomeHero() {
   return (
     <section className="space-y-14">
-      {/* avatar */}
       <Image
         src="/profile/me.png"
         alt="Серёжа Ивлев"
@@ -15,11 +14,8 @@ export function HomeHero() {
         sizes="512px"
       />
 
-      {/* links row */}
       <div className="flex flex-wrap items-baseline gap-x-8 gap-y-0 mb-6">
-        <p className="t-title ty-title">
-          Серёжа Ивлев
-        </p>
+        <p className="t-title ty-title">Серёжа Ивлев</p>
         <div className="flex flex-col sm:flex-row gap-4 sm:gap-x-8 mt-4">
           <Link href="https://drive.google.com/file/d/1n7OB6XH48o5YIqdLwqVIowm41XCQs3EM/view" variant="up-right">
             CV
@@ -34,7 +30,6 @@ export function HomeHero() {
         </div>
       </div>
 
-      {/* text */}
       <div className="mt-[-8] mb-[-16]">
         <div className="t-body ty-body">
           <p>
@@ -46,7 +41,7 @@ export function HomeHero() {
           <p>
             Нахожусь в активном поиске новых вызовов.
             <span className="inline-block align-baseline ml-1">
-              <img src="/warrior.svg" alt="" className="inline-block h-[1.2em] w-auto align-[-0.15em]" />
+              <Image src="/warrior.svg" alt="" width={20} height={20} className="inline-block h-[1.2em] w-auto align-[-0.15em]" />
             </span>
           </p>
         </div>

@@ -1,5 +1,6 @@
 "use client";
 
+import type { CSSProperties } from "react";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
@@ -10,7 +11,7 @@ type Common = {
     objectPosition?: "center" | "top";
 };
 
-type MediaItem =
+export type MediaItem =
     | (Common & {
         type: "image";
         mode?: "fill" | "static";
@@ -46,7 +47,6 @@ function VideoPlayer({
     loop,
     muted,
     playsInline,
-    className,
 }: {
     src: string;
     poster?: string;
@@ -54,7 +54,6 @@ function VideoPlayer({
     loop: boolean;
     muted: boolean;
     playsInline: boolean;
-    className: string;
 }) {
     const videoRef = useRef<HTMLVideoElement | null>(null);
     const rafRef = useRef<number | null>(null);
@@ -124,7 +123,11 @@ function VideoPlayer({
     function togglePlay() {
         const v = videoRef.current;
         if (!v) return;
-        v.paused ? v.play() : v.pause();
+        if (v.paused) {
+            void v.play();
+            return;
+        }
+        v.pause();
     }
 
     function commitSeek(value: number) {
@@ -160,9 +163,11 @@ function VideoPlayer({
                     disabled={!isReady}
                     className="h-11 w-11 rounded-full flex items-center justify-center disabled:opacity-40"
                 >
-                    <img
+                    <Image
                         src={isPlaying ? "/icones/pause-fill.svg" : "/icones/play-fill.svg"}
                         className="w-8 h-8"
+                        width={32}
+                        height={32}
                         alt=""
                     />
                 </button>
@@ -174,7 +179,7 @@ function VideoPlayer({
                     step={0.01}
                     value={shownValue}
                     disabled={!isReady || duration <= 0}
-                    style={{ ["--range-p" as any]: percent }}
+                    style={{ "--range-p": percent } as CSSProperties}
                     className="videoRange flex-1"
                     onPointerDown={(e) => {
                         setIsScrubbing(true);
@@ -204,7 +209,7 @@ export function MediaBlock({
     items,
     fullWidth = false,
 }: {
-    items: [MediaItem] | [MediaItem, MediaItem] | [MediaItem, MediaItem, MediaItem];
+    items: MediaItem[];
     fullWidth?: boolean;
 }) {
     const count = items.length;
@@ -266,7 +271,6 @@ export function MediaBlock({
                                     loop={it.loop ?? true}
                                     muted={it.muted ?? true}
                                     playsInline={it.playsInline ?? true}
-                                    className={`h-full w-full ${fit} ${pos}`}
                                 />
                             ) : (
                                 <video

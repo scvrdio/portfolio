@@ -2,21 +2,11 @@ import { Link } from "../ui/Link";
 import { TextBlock } from "@/components/ui/TextBlock";
 import { MediaBlock } from "@/components/ui/MediaBlock";
 import NextLink from "next/link";
-
-type Project = {
-  href: string;
-  title: string;
-  meta: string;
-  description: string;
-  note: string;
-  figmaHref?: string;
-  media?: any[]; // массив MediaItem, как в MediaBlock
-};
+import type { Project } from "@/types/project";
 
 export function ProjectBlock({ p }: { p: Project }) {
   return (
     <section className="space-y-4">
-      {/* title + meta */}
       <div className="flex flex-wrap items-baseline gap-x-4 gap-y-2">
         {p.figmaHref ? (
           <Link href={p.figmaHref} variant="up-right">
@@ -29,17 +19,10 @@ export function ProjectBlock({ p }: { p: Project }) {
         <p className="t-accent ty-body">{p.meta}</p>
       </div>
 
-      {/* описание */}
       <TextBlock>{p.description}</TextBlock>
 
-      {/* роль/вклад + ссылка "Описание →" */}
+      <TextBlock>{p.note}</TextBlock>
 
-      <TextBlock>
-        {p.note}{" "}
-
-      </TextBlock>
-
-      {/* media */}
       {p.media?.length ? (
         <NextLink
           href={p.href}
@@ -51,7 +34,7 @@ export function ProjectBlock({ p }: { p: Project }) {
             ↗
           </span>
 
-          <MediaBlock items={p.media as any} fullWidth />
+          <MediaBlock items={p.media} fullWidth />
         </NextLink>
       ) : null}
     </section>
