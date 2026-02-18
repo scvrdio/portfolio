@@ -1,5 +1,6 @@
-﻿"use client";
+"use client";
 
+import { useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import NextLink from "next/link";
 import Image from "next/image";
@@ -29,11 +30,43 @@ function shouldHandleClick(event: React.MouseEvent<HTMLAnchorElement>) {
   return !event.defaultPrevented && event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey;
 }
 
+function renderMeta(meta: string) {
+  const [lead, ...tailParts] = meta.split("·");
+  if (!tailParts.length) return meta;
+
+  const tail = tailParts.join("·").trim();
+  return (
+    <>
+      {lead.trim()} · <span className="inline-block whitespace-nowrap">{tail}</span>
+    </>
+  );
+}
+
 export function ProjectBlock({ p }: { p: Project }) {
   const router = useRouter();
+  const metricsScrollRef = useRef<HTMLDivElement | null>(null);
   const slug = getCaseSlug(p.href);
   const hero = p.media?.[0];
   const hasSimpleStaticHero = p.media?.length === 1 && hero?.type === "image" && hero.mode === "static";
+
+  useEffect(() => {
+    if (!metricsScrollRef.current) return;
+    const node = metricsScrollRef.current;
+    node.scrollLeft = 0;
+
+    const rafId = window.requestAnimationFrame(() => {
+      node.scrollLeft = 0;
+    });
+
+    const timeoutId = window.setTimeout(() => {
+      node.scrollLeft = 0;
+    }, 120);
+
+    return () => {
+      window.cancelAnimationFrame(rafId);
+      window.clearTimeout(timeoutId);
+    };
+  }, [p.href]);
 
   const handleOpenCase = (event: React.MouseEvent<HTMLAnchorElement>) => {
     if (!slug || !shouldHandleClick(event)) {
@@ -66,12 +99,19 @@ export function ProjectBlock({ p }: { p: Project }) {
           <p className="t-title ty-title">{p.title}</p>
         )}
 
-        <p className="t-accent ty-body">{p.meta}</p>
+        <p className="t-accent ty-body">{renderMeta(p.meta)}</p>
       </div>
 
       <TextBlock>{p.description}</TextBlock>
-      <TextBlock>{p.note}</TextBlock>
-      {p.metrics?.length ? <MetricPills items={p.metrics} /> : null}
+
+      {p.metrics?.length ? (
+        <div
+          ref={metricsScrollRef}
+          className="-mx-4 overflow-x-auto px-4 touch-pan-x [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+        >
+          <MetricPills items={p.metrics} noWrap />
+        </div>
+      ) : null}
 
       {p.media?.length ? (
         <NextLink href={p.href} className="group relative block" aria-label={`Открыть кейс: ${p.title}`} onClick={handleOpenCase}>
@@ -97,6 +137,8 @@ export function ProjectBlock({ p }: { p: Project }) {
           </div>
         </NextLink>
       ) : null}
+
+      {/* <TextBlock>{p.note}</TextBlock> */}
     </section>
   );
 }

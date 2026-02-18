@@ -2,7 +2,7 @@ type Item = { label: string; value: string };
 
 function MetricPill({ title, value }: { title: string; value: string }) {
   return (
-    <div className="inline-flex flex-col items-start">
+    <div className="inline-flex shrink-0 flex-col items-start">
       {/* верхняя капсула */}
       <div className="relative z-10 inline-flex items-center rounded-[24px] border border-[#0033FF] bg-white px-2 py-[2px]">
         <span className="text-[10px] font-bold uppercase tracking-[0.12em] text-[#0033FF]">
@@ -20,9 +20,9 @@ function MetricPill({ title, value }: { title: string; value: string }) {
   );
 }
 
-export function MetricPills({ items }: { items: Item[] }) {
+export function MetricPills({ items, noWrap = false }: { items: Item[]; noWrap?: boolean }) {
   return (
-    <div className="flex flex-wrap gap-3">
+    <div className={noWrap ? "flex w-max gap-3 pr-2" : "flex flex-wrap gap-3"}>
       {items.map((x) => (
         <MetricPill key={`${x.label}-${x.value}`} title={x.label} value={x.value} />
       ))}
