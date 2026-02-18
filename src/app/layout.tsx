@@ -131,7 +131,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 />
               </svg>
             </div>
-            <div id="loader-vpn">Если сайт не грузится, подключитесь, пожалуйста с VPN</div>
+            <div id="loader-vpn">Если сайт не грузится, <br /> подключитесь, пожалуйста, с VPN</div>
           </div>
         </div>
 
