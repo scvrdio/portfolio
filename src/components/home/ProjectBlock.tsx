@@ -24,12 +24,7 @@ export function ProjectBlock({ p }: { p: Project }) {
       <TextBlock>{p.note}</TextBlock>
 
       {p.media?.length ? (
-        <NextLink
-          href={p.href}
-          target="_blank"
-          className="group relative block mt-[-24px]"
-          aria-label={`Открыть кейс: ${p.title}`}
-        >
+        <NextLink href={p.href} className="group relative block mt-[-24px]" aria-label={`Открыть кейс: ${p.title}`}>
           <span className="pointer-events-none absolute right-4 top-10 z-10 text-[#0033ff] text-[24px] transition-transform duration-200 group-hover:scale-80 group-hover:rotate-45">
             ↗
           </span>

@@ -2,7 +2,7 @@ import type { Project } from "@/types/project";
 
 export const projects: Project[] = [
   {
-    href: "/look",
+    href: "/case/look",
     title: "Look",
     meta: "Product Designer / Product Lead",
     description:
@@ -21,11 +21,11 @@ export const projects: Project[] = [
     ],
   },
   {
-    href: "/popolam",
+    href: "/case/popolam",
     title: "Пополам",
-    meta: "Product Designer · Янв 2025 — Окт 2025",
-    description: "Приложение для быстрого деления чеков между людьми с использованием компьютерного зрения и ML‑алгоритмов.",
-    note: "Нарисовал дизайн, улучшил флоу деления чека и подключения СБП.",
+    meta: "Product Designer · Янв 2025 — Окт 2025",
+    description: "Приложение для быстрого деления чеков между людьми с использованием компьютерного зрения и ML-алгоритмов.",
+    note: "Нарисовал дизайн, улучшил флоу деления чека и подключения СБП.",
     figmaHref: "https://www.figma.com/design/YSb8QXs053NIUCRF9qtqTV/%D0%9F%D0%BE%D0%BF%D0%BE%D0%BB%D0%B0%D0%BC?node-id=0-1&t=4xq48AqBtQE5TY0X-1",
     media: [
       {
@@ -39,11 +39,11 @@ export const projects: Project[] = [
     ],
   },
   {
-    href: "/terminal",
+    href: "/case/terminal",
     title: "Terminal",
-    meta: "Product Designer · Сен 2022 — Дек 2024",
-    description: "Web-3 платформа мини-игр в Telegram с месячной аудиторией 5М+ пользователей. ",
-    note: "Разработал дизайн и репозиционирование на web-2 аудиторию, улучшил конверсию в пополенение, фокусировался на активации и ретеншене.",
+    meta: "Product Designer · Сен 2022 — Дек 2024",
+    description: "Web-3 платформа мини-игр в Telegram с месячной аудиторией 5М+ пользователей.",
+    note: "Разработал дизайн и репозиционирование на web-2 аудиторию, улучшил конверсию в пополнение, фокусировался на активации и ретеншене.",
     media: [
       {
         type: "image",
@@ -55,5 +55,4 @@ export const projects: Project[] = [
       },
     ],
   },
-
 ];

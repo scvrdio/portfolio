@@ -17,6 +17,13 @@ body {
   background: #fff;
   color: #171717;
   font-feature-settings: "cv04" 1;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
 }
 
 @theme inline {
@@ -147,4 +154,13 @@ video::-webkit-media-controls {
 
 .videoRange {
   touch-action: pan-y;
+}
+
+.modal-scroll-hidden {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.modal-scroll-hidden::-webkit-scrollbar {
+  display: none;
 }
