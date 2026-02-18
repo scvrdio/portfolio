@@ -118,7 +118,7 @@ export function Modal({ children }: { children: React.ReactNode }) {
 
   return (
     <div
-      className={`fixed inset-0 z-[100] h-dvh overflow-hidden bg-white p-0 transition-opacity duration-[100ms] ease-in-out ${
+      className={`fixed inset-0 z-[100] h-dvh overflow-x-hidden overflow-y-hidden bg-white p-0 transition-opacity duration-[100ms] ease-in-out ${
         isOpen ? "opacity-100" : "opacity-0"
       }`}
       onClick={requestClose}
@@ -128,7 +128,7 @@ export function Modal({ children }: { children: React.ReactNode }) {
       <div className="mx-auto h-full w-full max-w-none px-0 md:max-w-[720px] md:px-4" onClick={(event) => event.stopPropagation()}>
         <div className={`flex h-full w-full flex-col overflow-hidden rounded-none bg-white transition-all duration-[100ms] ease-in-out md:rounded-2xl ${isOpen ? "opacity-100" : "opacity-0"}`}>
           <ModalCloseContext.Provider value={requestClose}>
-            <div className="modal-scroll-hidden flex-1 overflow-y-auto px-4 pb-6 pt-0 md:px-4 md:pb-8 md:pt-0">{children}</div>
+            <div className="modal-scroll-hidden flex-1 overflow-x-hidden overflow-y-auto px-4 pb-6 pt-0 md:px-4 md:pb-8 md:pt-0">{children}</div>
           </ModalCloseContext.Provider>
         </div>
       </div>

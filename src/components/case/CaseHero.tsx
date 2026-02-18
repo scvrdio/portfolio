@@ -37,7 +37,7 @@ export function CaseHero(props: {
     const sourceHero = document.querySelector<HTMLElement>(`[data-case-hero-source="${props.slug}"]`);
     const sourceImage = sourceHero?.querySelector("img") as HTMLImageElement | null;
     const target = rootRef.current;
-    const targetImage = target.querySelector("img") as HTMLElement | null;
+    const targetImage = target.querySelector("img") as HTMLImageElement | null;
     const targetRect = (targetImage ?? target).getBoundingClientRect();
     target.style.visibility = "hidden";
 
@@ -67,7 +67,34 @@ export function CaseHero(props: {
     const finish = () => {
       target.style.visibility = "";
       window.__caseHeroTransition = undefined;
-      ghost.remove();
+      if (ghost.isConnected) {
+        ghost.remove();
+      }
+    };
+
+    const finishWhenTargetReady = () => {
+      if (!targetImage) {
+        finish();
+        return;
+      }
+
+      if (targetImage.complete && targetImage.naturalWidth > 0) {
+        finish();
+        return;
+      }
+
+      const reveal = () => {
+        window.clearTimeout(revealTimeout);
+        targetImage.removeEventListener("load", reveal);
+        finish();
+      };
+
+      targetImage.addEventListener("load", reveal, { once: true });
+      const revealTimeout = window.setTimeout(reveal, 350);
+
+      if (typeof targetImage.decode === "function") {
+        targetImage.decode().then(reveal).catch(() => {});
+      }
     };
 
     requestAnimationFrame(() => {
@@ -78,7 +105,7 @@ export function CaseHero(props: {
       ghost.style.height = `${targetRect.height}px`;
     });
 
-    const timeout = window.setTimeout(finish, 450);
+    const timeout = window.setTimeout(finishWhenTargetReady, 430);
     return () => {
       window.clearTimeout(timeout);
       if (ghost.isConnected) {

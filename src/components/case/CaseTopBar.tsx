@@ -21,7 +21,7 @@ export function CaseTopBar(props: {
         <button
           type="button"
           onClick={() => (closeModal ? closeModal() : router.back())}
-          className="group -ml-2 inline-flex h-8 w-8 items-center justify-center"
+          className="group inline-flex h-8 w-8 items-center justify-center"
           aria-label="Закрыть"
         >
           <span className="t-accent ty-body text-[28px] text-black/60 transition-colors duration-100 group-hover:text-[#0033ff]">×</span>

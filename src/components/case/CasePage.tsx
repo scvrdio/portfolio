@@ -26,7 +26,7 @@ export function CasePage({
   if (isModal) {
     return (
       <div className="space-y-10">
-        <div className="sticky top-0 z-20 -mx-8 border-b border-black/10 bg-white px-8 py-3 md:-mx-8 md:px-8">
+        <div className="sticky top-0 z-20 -mx-4 border-b border-black/10 bg-white px-4 py-3 md:-mx-4 md:px-4">
           <CaseTopBar title={title} figmaHref={figmaHref} linkLabel={linkLabel} isModal />
         </div>
         <CaseHero src={heroSrc} slug={slug} width={heroWidth} height={heroHeight} animateFromCard />
