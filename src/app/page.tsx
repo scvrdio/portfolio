@@ -4,7 +4,7 @@ import { ProjectList } from "@/components/home/ProjectList";
 
 export default function Page() {
   return (
-    <div className="space-y-32 mt-16">
+    <div className="space-y-16 md:space-y-32 mt-4 md:mt-16">
       <HomeHero />
       <WaveDivider />
       <ProjectList />
