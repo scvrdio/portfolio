@@ -154,3 +154,7 @@ img {
     rgba(0,0,0,.12) 100%
   );
 }
+
+video::-webkit-media-controls {
+  display: none !important;
+}

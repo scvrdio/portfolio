@@ -28,6 +28,7 @@ type MediaItem =
         loop?: boolean;
         muted?: boolean;
         playsInline?: boolean;
+        controls?: boolean;
     });
 
 function formatTime(sec: number) {
@@ -93,6 +94,10 @@ function VideoPlayer({
         const v = videoRef.current;
         if (!v) return;
 
+        v.addEventListener("enterpictureinpicture", (e) => {
+            e.preventDefault();
+        });
+
         const onLoaded = () => {
             setDuration(v.duration || 0);
             setIsReady(true);
@@ -136,7 +141,6 @@ function VideoPlayer({
         <div className="flex flex-col">
             <video
                 ref={videoRef}
-                className={className}
                 src={src}
                 poster={poster}
                 autoPlay={autoPlay}
@@ -144,9 +148,12 @@ function VideoPlayer({
                 muted={muted}
                 playsInline={playsInline}
                 preload="metadata"
+                controls={false}
+                disablePictureInPicture
+                controlsList="nodownload nofullscreen noremoteplayback"
             />
 
-            <div className="mt-3 pl-2 pr-6 flex items-center gap-1">
+            <div className="mt-3 pr-5 flex items-center gap-1">
                 <button
                     onClick={togglePlay}
                     disabled={!isReady}
