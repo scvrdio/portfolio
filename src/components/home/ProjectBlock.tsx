@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
@@ -115,12 +115,12 @@ export function ProjectBlock({ p }: { p: Project }) {
 
       {p.media?.length ? (
         <NextLink href={p.href} className="group relative block" aria-label={`Открыть кейс: ${p.title}`} onClick={handleOpenCase}>
-          <span className="pointer-events-none absolute right-4 top-2 z-10 text-[#0033ff] text-[24px] transition-transform duration-200 group-hover:scale-80 group-hover:rotate-45">
-            ↗
-          </span>
-          <div data-case-hero-source={slug ?? undefined}>
+          <div data-case-hero-source={slug ?? undefined} className="relative mt-8">
+            <span className="pointer-events-none absolute left-1/2 top-0 z-10 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white border-2 bg-[#f8f8f8] px-2 py-1 text-[12px] font-semibold leading-none text-black/60">
+              О проекте ↓
+            </span>
             {hasSimpleStaticHero && hero ? (
-              <div className="mt-8 overflow-hidden rounded-2xl bg-neutral-100">
+              <div className="overflow-hidden rounded-2xl bg-neutral-100">
                 <Image
                   src={hero.src}
                   alt={hero.alt ?? ""}
