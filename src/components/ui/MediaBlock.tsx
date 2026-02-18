@@ -29,6 +29,7 @@ type MediaItem =
         muted?: boolean;
         playsInline?: boolean;
         controls?: boolean;
+        customControls?: boolean; // по умолчанию true
     });
 
 function formatTime(sec: number) {
@@ -257,7 +258,7 @@ export function MediaBlock({
                                         className={`${fit} ${pos}`}
                                     />
                                 )
-                            ) : (
+                            ) : (it.customControls ?? true) ? (
                                 <VideoPlayer
                                     src={it.src}
                                     poster={it.poster}
@@ -266,6 +267,17 @@ export function MediaBlock({
                                     muted={it.muted ?? true}
                                     playsInline={it.playsInline ?? true}
                                     className={`h-full w-full ${fit} ${pos}`}
+                                />
+                            ) : (
+                                <video
+                                    className={`h-full w-full ${fit} ${pos}`}
+                                    src={it.src}
+                                    poster={it.poster}
+                                    autoPlay={it.autoPlay ?? true}
+                                    loop={it.loop ?? true}
+                                    muted={it.muted ?? true}
+                                    playsInline={it.playsInline ?? true}
+                                    controls
                                 />
                             )}
                         </div>

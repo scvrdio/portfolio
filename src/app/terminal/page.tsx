@@ -111,6 +111,7 @@ export default function Page() {
                 loop: true,
                 muted: true,
                 controls: false,
+                customControls: false,
               },
               {
                 type: "image",
@@ -139,6 +140,7 @@ export default function Page() {
                 loop: true,
                 muted: true,
                 controls: false,
+                customControls: false,
               },
             ]}
           />
@@ -196,6 +198,7 @@ export default function Page() {
                 loop: true,
                 muted: true,
                 controls: false,
+                customControls: false,
               },
               {
                 type: "video",
@@ -205,6 +208,7 @@ export default function Page() {
                 loop: true,
                 muted: true,
                 controls: false,
+                customControls: false,
               },
             ]}
           />
