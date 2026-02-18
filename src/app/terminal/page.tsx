@@ -1,5 +1,4 @@
-import { CaseTopBar } from "@/components/case/CaseTopBar";
-import { CaseHero } from "@/components/case/CaseHero";
+import { CasePage } from "@/components/case/CasePage";
 import { MetricPills } from "@/components/ui/MetricPills";
 import { Section } from "@/components/ui/Section";
 import { TextBlock } from "@/components/ui/TextBlock";
@@ -7,11 +6,7 @@ import { MediaBlock } from "@/components/ui/MediaBlock";
 
 export default function Page() {
   return (
-    <div className="space-y-10">
-      <CaseTopBar title="Terminal" figmaHref="#" />
-      <CaseHero src="/projects/terminal-hero.png" />
-
-      <article className="space-y-12">
+    <CasePage title="Terminal" figmaHref="#" heroSrc="/projects/terminal-hero.png">
         {/* ВВЕДЕНИЕ */}
         <Section title="Terminal">
           <TextBlock accent="Описание">
@@ -257,7 +252,6 @@ export default function Page() {
         </Section>
 
 
-      </article>
-    </div>
+    </CasePage>
   );
 }

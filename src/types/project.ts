@@ -1,4 +1,4 @@
-import type { MediaItem } from "@/components/ui/MediaBlock";
+import type { MediaItem } from "@/types/media";
 
 export type Project = {
   href: string;
@@ -9,3 +9,4 @@ export type Project = {
   figmaHref?: string;
   media?: MediaItem[];
 };
+

@@ -1,5 +1,4 @@
-import { CaseTopBar } from "@/components/case/CaseTopBar";
-import { CaseHero } from "@/components/case/CaseHero";
+import { CasePage } from "@/components/case/CasePage";
 import { MetricPills } from "@/components/ui/MetricPills";
 import { Section } from "@/components/ui/Section";
 import { TextBlock } from "@/components/ui/TextBlock";
@@ -8,11 +7,12 @@ import { WaveDivider } from "@/components/ui/WaveDivider";
 
 export default function Page() {
   return (
-    <div className="space-y-10">
-      <CaseTopBar title="Look" figmaHref="https://t.me/wellook_bot" linkLabel="Telegram App"/>
-      <CaseHero src="/projects/look-hero.png" />
-
-      <article className="space-y-12">
+    <CasePage
+      title="Look"
+      figmaHref="https://t.me/wellook_bot"
+      linkLabel="Telegram App"
+      heroSrc="/projects/look-hero.png"
+    >
         {/* ВВЕДЕНИЕ */}
         <Section title="Look">
           <TextBlock accent="Описание">
@@ -178,7 +178,6 @@ export default function Page() {
 
         </Section>
 
-      </article>
-    </div>
+    </CasePage>
   );
 }

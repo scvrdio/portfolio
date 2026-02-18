@@ -40,22 +40,19 @@ img {
 
 @layer components {
 
-  /* Заголовок (синий) */
-  .t-title {
+    .t-title {
     @apply font-semibold text-[#0033FF];
     font-size: 22px;
     line-height: 150%;
   }
 
-  /* Акцентный текст (черный) */
-  .t-accent {
+    .t-accent {
     @apply font-normal text-black;
     font-size: 20px;
     line-height: 150%;
   }
 
-  /* Наборный текст (черный 60%) */
-  .t-body {
+    .t-body {
     @apply font-normal;
     font-size: 20px;
     line-height: 150%;
@@ -89,42 +86,26 @@ img {
 
 }
 
-/* ===== Video range (Chrome / Safari / Edge) ===== */
 .videoRange {
   -webkit-appearance: none;
   appearance: none;
   width: 100%;
   height: 44px;
-  /* высота кликабельной зоны */
-  background: transparent;
-  /* трек рисуем псевдоэлементами */
-  cursor: pointer;
+    background: transparent;
+    cursor: pointer;
 }
 
-/* track */
-.videoRange::-webkit-slider-runnable-track {
-  height: 4px;
-  /* толщина линии */
-  border-radius: 999px;
-  background: #black/60;
-}
-
-/* thumb */
 .videoRange::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
   margin-top: -6px;
-  /* центрируем по треку: -(thumb/2 - track/2) */
-  width: 4px;
+    width: 4px;
   height: 16px;
   border-radius: 999px;
   background: #0033ff;
-  /* цвет бегунка */
-  box-shadow: 0 0 0 2px #ffffff;
-  /* “хит-зона” / glow */
-}
+    box-shadow: 0 0 0 2px #ffffff;
+  }
 
-/* ===== Firefox ===== */
 .videoRange::-moz-range-track {
   height: 4px;
   border-radius: 999px;
@@ -144,10 +125,8 @@ img {
   height: 4px;
   border-radius: 999px;
   background: rgba(0, 51, 255, .9);
-  /* заполненная часть */
-}
+  }
 
-/* убираем фокус-обводки, если не нужны */
 .videoRange:focus {
   outline: none;
 }

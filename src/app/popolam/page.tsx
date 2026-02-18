@@ -1,5 +1,4 @@
-import { CaseTopBar } from "@/components/case/CaseTopBar";
-import { CaseHero } from "@/components/case/CaseHero";
+import { CasePage } from "@/components/case/CasePage";
 import { MetricPills } from "@/components/ui/MetricPills";
 import { Section } from "@/components/ui/Section";
 import { TextBlock } from "@/components/ui/TextBlock";
@@ -7,11 +6,7 @@ import { MediaBlock } from "@/components/ui/MediaBlock";
 
 export default function Page() {
   return (
-    <div className="space-y-10">
-      <CaseTopBar title="Попoлам" figmaHref="https://www.figma.com/design/YSb8QXs053NIUCRF9qtqTV/%D0%9F%D0%BE%D0%BF%D0%BE%D0%BB%D0%B0%D0%BC?node-id=0-1&t=ie10ciZHeCxHMfsz-1" />
-      <CaseHero src="/projects/popolam-hero.png" />
-
-      <article className="space-y-12">
+    <CasePage title="Popolam" figmaHref="https://www.figma.com/design/YSb8QXs053NIUCRF9qtqTV/%D0%9F%D0%BE%D0%BF%D0%BE%D0%BB%D0%B0%D0%BC?node-id=0-1&t=ie10ciZHeCxHMfsz-1" heroSrc="/projects/popolam-hero.png">
         {/* ВВЕДЕНИЕ */}
         <Section title="Пополам">
           <TextBlock accent="Описание">
@@ -220,7 +215,6 @@ export default function Page() {
           </TextBlock>
         </Section>
 
-      </article>
-    </div>
+      </CasePage>
   );
 }
