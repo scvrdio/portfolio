@@ -29,7 +29,7 @@ export default function Page() {
         </Section>
 
         <section className="space-y-[-30px] my-5">
-          <p className="t-title text-center">Work In Progress</p>
+          <p className="t-title ty-title text-center">Work In Progress</p>
           <WaveDivider />
         </section>
 
@@ -46,7 +46,6 @@ export default function Page() {
               autoPlay: true,
               loop: true,
               muted: true,
-              controls: false,
             },
           ]}
         />
